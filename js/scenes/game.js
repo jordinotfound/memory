@@ -22,22 +22,31 @@ class GameScene extends Phaser.Scene {
 		this.cameras.main.setBackgroundColor(0xBFFCFF);
 		var json = localStorage.getItem("config") || '{"cards":2,"dificulty":"hard"}';
 		var options_data = JSON.parse(json);
-		var n_pars = options.data_cards;
-		var arraycards	= cartes.slice(cuantosPares * 2);
-		var e_x = n_pars/2 * 96;
-		var e_y = n_pars/2 * 128;
-		if(n_pars > 3){
-			var files = 3;
-		}
-		else var files = 2;
+		var cards = options.data_cards*2;
+		var arraycards = cartes.slice(0,cards);
+		
+		for(var k=0; k<cards; k++){
 
-		var quin = 0;
+			this.add.image(125*k+50,300,arraycards[k]);
+			this.cards = this.physics.add.staticGroup();
+			this.cards.create(125*k+50,300,'back');
+
+		}
+
+		// var e_x = cards/2 * 96;
+		// var e_y = cards/2 * 128;
+		// if cards > 3){
+		// 	var files = 3;
+		// }
+		// else var files = 2;
+
+		// var quin = 0;
 
 		arraycards.sort((a,b) => 0.5 - Math.random());
 
-		for(let i = 0; i < n_pars; i++){
+		for(let i = 0; i < cards; i++){
 			for(let j = 0; j<files; j++){
-				console.log(n_pars);
+				console.log cards);
 				this.add.image(i*125 + this.cameras.main.centerX - e_x, j*150 + this.cameras.main.centerY - e_y, arraycards[quin]);
 				quin +=1;
 			}
@@ -46,16 +55,10 @@ class GameScene extends Phaser.Scene {
 		this.cards = this.physics.add.staticGroup()
 
 
-		this.add.image(250, 300, arraycards[0]);
-		this.add.image(350, 300, arraycards[1]);
-		this.add.image(450, 300, arraycards[2]);
-		this.add.image(550, 300, arraycards[3]);
-		
-		
-		this.cards.create(250, 300, 'back');
-		this.cards.create(350, 300, 'back');
-		this.cards.create(450, 300, 'back');
-		this.cards.create(550, 300, 'back');
+
+
+
+
 		
 		let i = 0;
 		this.cards.children.iterate((card)=>{
