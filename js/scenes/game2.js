@@ -18,7 +18,7 @@ class GameScene extends Phaser.Scene {
 	}
 	
     create (){	
-		let cartes = ['co','co','cb','cb','sb','sb','so','so','tb','tb','to','to'];
+		let cartes = ['co', 'sb', 'co', 'sb', 'tb','co', 'sb', 'co', 'sb', 'tb'];
 		this.cameras.main.setBackgroundColor(0xD8D4EC);
 		var json = localStorage.getItem("config") || '{"cards":2,"dificulty":"hard"}';
 		var options_data = JSON.parse(json);
@@ -39,14 +39,14 @@ class GameScene extends Phaser.Scene {
 		}
 
 
-		// var quin = 0;
-		// for(let i = 0; i < cards; i++){
-		// 	for(let j = 0; j<files; j++){
-		// 		console.log (cards);
-		// 		this.add.image(i*125 + this.cameras.main.centerX - e_x, j*150 + this.cameras.main.centerY - e_y, arraycards[quin]);
-		// 		quin +=1;
-		// 	}
-		// }
+		var quin = 0;
+		for(let i = 0; i < cards; i++){
+			for(let j = 0; j<files; j++){
+				console.log (cards);
+				this.add.image(i*125 + this.cameras.main.centerX - e_x, j*150 + this.cameras.main.centerY - e_y, arraycards[quin]);
+				quin +=1;
+			}
+		}
 
 		
 		let i = 0;
