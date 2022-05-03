@@ -23,11 +23,34 @@ class GameScene extends Phaser.Scene {
 		var json = localStorage.getItem("config") || '{"cards":2,"dificulty":"hard"}';
 		var options_data = JSON.parse(json);
 		var cards = options_data.cards*2;
+		var dificultat = options_data.dificulty;
 		var arraycards = cartes.slice(0,cards);
 		this.cards = this.physics.add.staticGroup();
 
 		// var e_X = 
 		// var e_Y =
+        var t_restant = null;
+		var punts_perduts = null;
+
+		if(dificultat == "hard"){
+			punts_perduts = 20;
+			t_restant = 1000;
+		}
+		else if(dificultat == "normal"){
+			punts_perduts = 10;
+			t_restant = 2000;
+		}
+		else{
+			punts_perduts = 5;
+			t_restant = 3000;
+		}
+
+
+
+
+
+
+
 
 		arraycards.sort((a,b) => 0.5 - Math.random());
 		
@@ -58,8 +81,24 @@ class GameScene extends Phaser.Scene {
 				card.disableBody(true,true);
 				if (this.firstClick){
 					if (this.firstClick.card_id !== card.card_id){
-						this.score -= 20;
+						this.score -= punts_perduts;
 						this.firstClick.enableBody(false, 0, 0, true, true);
+						var error = [];
+						var cont = 0;
+						for(let j = 0; j<cards*2; j++){
+							let fallada = this.add.image(125*j+50,300,arraycards[cont]);
+
+							error.push(fallada);
+							cont++;
+						}
+
+						setTimeout(() =>{
+							for(let i = 0; i < cards*2; i++){
+								error[i].destroy();
+
+							}
+						}, t_restant);
+
 						card.enableBody(false, 0, 0, true, true);
 						if (this.score <= 0){
 							alert("Game Over");

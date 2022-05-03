@@ -17,6 +17,10 @@ function exit (){
 	name = "";
 }
 
+function puntuacion(){
+	loadpage("./html/puntuacions.html");
+}
+
 function options(){
 	loadpage("./html/options.html");
 }
