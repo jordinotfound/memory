@@ -1,6 +1,5 @@
 var array1 = localStorage.getItem('puntuacion');
 var array = JSON.parse(array1)
-
 var bubbleSort = function(array){
   var sorted = false;
   var temp;
