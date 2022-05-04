@@ -19,6 +19,13 @@
 	
 
 }
+input[type=number]{
+    height: 3rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 3rem;
+    text-align: center;
+}
 
 canvas {
     display: block;
@@ -47,7 +54,7 @@ img {
 	justify-content: center;
 	align-items: center;
 	padding: 20 px;
-	heigth: 100 vh;
+	height: 100 vh;
 }
 
 .crt {
