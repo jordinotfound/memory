@@ -109,6 +109,19 @@ class GameScene extends Phaser.Scene {
 						this.correct++;
 						if (this.correct >= options_data.cards){
 							alert("You Win with " + this.score + " points.");
+							this.data.set('score',this.score);
+
+
+							var text = this.add.text(100,100, '', { font: '64px Courier', fill: '#020202'});
+							text.setText([
+								'Score ' + this.data.get('score')
+							])
+
+							var puntuacio = this.data.get('puntuacio');
+							var array = []
+							array.push(p);
+
+							localStorage.setItem('puntuacion', JSON.stringify(arrayjugadors));
 							loadpage("../");
 						}
 					}
